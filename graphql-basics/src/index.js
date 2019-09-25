@@ -6,6 +6,9 @@ import { Server } from "https";
 const typeDefs = `
     type Query {
         hello: String!
+        name: String!
+        location: String!
+        bio: String!
     }
 `;
 
@@ -15,6 +18,15 @@ const resolvers = {
   Query: {
     hello() {
       return "This is my first Query!";
+    },
+    name() {
+      return "Alexander!";
+    },
+    location() {
+      return "Los Angeles, California";
+    },
+    bio() {
+      return "I am a current student and Section Lead at Lambda School";
     }
   }
 };
