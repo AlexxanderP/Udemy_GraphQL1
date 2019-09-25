@@ -1,11 +1,41 @@
-// import myCurrentLocation, { getGreeting, message, name } from "./myModule";
+import { GraphQLServer } from "graphql-yoga";
+import { Server } from "https";
 
-import myAddFunction, { subtract } from "./math";
+//Type Definitions -- Application Schema -- Defines all operations that can be performed and what custom data types look like -- What our data looks like
 
-// console.log(message);
-// console.log(name);
-// console.log(myCurrentLocation);
-// console.log(getGreeting("Alexander"));
+const typeDefs = `
+    type Query {
+        hello: String!
+        name: String!
+        location: String!
+        bio: String!
+    }
+`;
 
-console.log(myAddFunction(10, 20));
-console.log(subtract(10, 8));
+//Resolvers -- Set of Functions (Define functions that run for each of the operations that can be performed on API)
+
+const resolvers = {
+  Query: {
+    hello() {
+      return "This is my first Query!";
+    },
+    name() {
+      return "Alexander!";
+    },
+    location() {
+      return "Los Angeles, California";
+    },
+    bio() {
+      return "I am a current student and Section Lead at Lambda School";
+    }
+  }
+};
+
+const server = new GraphQLServer({
+  typeDefs,
+  resolvers
+});
+
+server.start(() => {
+  console.log("the server is up!!");
+});
