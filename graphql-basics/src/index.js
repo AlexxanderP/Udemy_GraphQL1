@@ -1,14 +1,28 @@
 import { GraphQLServer } from "graphql-yoga";
-import { Server } from "https";
+
+//GraphQL Creating Custom Types //
 
 //Type Definitions -- Application Schema -- Defines all operations that can be performed and what custom data types look like -- What our data looks like
 
 const typeDefs = `
     type Query {
-        hello: String!
+    me: User!
+    post: Post!
+    }
+
+    type User {
+        id: ID!
         name: String!
-        location: String!
-        bio: String!
+        email: String!
+        age: Int
+    }
+
+
+    type Post {
+        id: ID!
+        title: String!
+        body: String!
+        published: Boolean!
     }
 `;
 
@@ -16,17 +30,22 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    hello() {
-      return "This is my first Query!";
+    me() {
+      return {
+        id: "222226",
+        name: "Sarrah",
+        email: "Sarrah@awesomemail.com",
+        age: 21
+      };
     },
-    name() {
-      return "Alexander!";
-    },
-    location() {
-      return "Los Angeles, California";
-    },
-    bio() {
-      return "I am a current student and Section Lead at Lambda School";
+    post() {
+      return {
+        id: "123456",
+        title: "How to Meal Plan",
+        body:
+          "Meal Prepping is a great opportunity to get healthy and loose weight!",
+        published: false
+      };
     }
   }
 };
