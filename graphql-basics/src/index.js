@@ -1,11 +1,12 @@
 import { GraphQLServer } from "graphql-yoga";
 
-//GraphQL Operation Arguments //
+//GraphQL Operation Arguments Challenge //
 
 //Type Definitions -- Application Schema -- Defines all operations that can be performed and what custom data types look like -- What our data looks like
 
 const typeDefs = `
     type Query {
+        add(a: Float!, b: Float!): Float!
         greeting(name: String, position: String): String!
         me: User!
         post: Post!
@@ -31,6 +32,10 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
+    add(args) {
+      return args.a + args.b;
+    },
+
     greeting(parent, args, ctx, info) {
       if (args.name && args.position) {
         return `Hello, ${args.name}! You are my favorite ${args.position}`;
