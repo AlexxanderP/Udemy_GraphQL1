@@ -4,6 +4,10 @@ import { GraphQLServer } from "graphql-yoga";
 
 //Scalar Types -- String!, Boolean, Int, Float, ID
 
+// Live Server for local development:
+// "start": "nodemon src/index.js --exec babel-node",
+//npm i nodemon@1.17.5 --save-dev
+
 //Type Definitions -- Application Schema -- Defines all operations that can be performed and what custom data types look like -- What our data looks like
 
 const typeDefs = `
