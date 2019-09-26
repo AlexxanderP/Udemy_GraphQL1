@@ -1,6 +1,8 @@
 import { GraphQLServer } from "graphql-yoga";
-import { Server } from "https";
-import { getPackedSettings } from "http2";
+
+//GraphQL Scalar Types //
+
+//Scalar Types -- String!, Boolean, Int, Float, ID
 
 //Type Definitions -- Application Schema -- Defines all operations that can be performed and what custom data types look like -- What our data looks like
 
@@ -9,9 +11,16 @@ const typeDefs = `
         id: ID!
         name: String!
         age: Int!
-        employed: boolean!
+        employed: Boolean!
         gpa: Float
 
+
+
+        title: String!
+        price: Float!
+        releaseYear: Int
+        rating: Float
+        inStock: Boolean
     }
 `;
 
@@ -20,19 +29,35 @@ const typeDefs = `
 const resolvers = {
   Query: {
     id() {
-        return 'aaa222'
+      return "aaa222";
     },
     name() {
-        return 'Alexander'
+      return "Alexander";
     },
     age() {
-        return 24
+      return 24;
     },
     employed() {
-        return true
-    }
+      return true;
+    },
     gpa() {
-        return null
+      return null;
+    },
+
+    title() {
+      return "Desktop Computer";
+    },
+    price() {
+      return 3999.75;
+    },
+    releaseYear() {
+      return 2019;
+    },
+    rating() {
+      return 4.99;
+    },
+    inStock() {
+      return true;
     }
   }
 };
