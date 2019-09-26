@@ -1,14 +1,17 @@
 import { GraphQLServer } from "graphql-yoga";
 import { Server } from "https";
+import { getPackedSettings } from "http2";
 
 //Type Definitions -- Application Schema -- Defines all operations that can be performed and what custom data types look like -- What our data looks like
 
 const typeDefs = `
     type Query {
-        hello: String!
+        id: ID!
         name: String!
-        location: String!
-        bio: String!
+        age: Int!
+        employed: boolean!
+        gpa: Float
+
     }
 `;
 
@@ -16,17 +19,20 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    hello() {
-      return "This is my first Query!";
+    id() {
+        return 'aaa222'
     },
     name() {
-      return "Alexander!";
+        return 'Alexander'
     },
-    location() {
-      return "Los Angeles, California";
+    age() {
+        return 24
     },
-    bio() {
-      return "I am a current student and Section Lead at Lambda School";
+    employed() {
+        return true
+    }
+    gpa() {
+        return null
     }
   }
 };
