@@ -7,6 +7,7 @@ import { GraphQLServer } from "graphql-yoga";
 const typeDefs = `
     type Query {
     me: User!
+    post: Post!
     }
 
     type User {
@@ -14,6 +15,14 @@ const typeDefs = `
         name: String!
         email: String!
         age: Int
+    }
+
+
+    type Post {
+        id: ID!
+        title: String!
+        body: String!
+        published: Boolean!
     }
 `;
 
@@ -27,6 +36,15 @@ const resolvers = {
         name: "Sarrah",
         email: "Sarrah@awesomemail.com",
         age: 21
+      };
+    },
+    post() {
+      return {
+        id: "123456",
+        title: "How to Meal Plan",
+        body:
+          "Meal Prepping is a great opportunity to get healthy and loose weight!",
+        published: false
       };
     }
   }
